@@ -13,6 +13,9 @@ public class flight : MonoBehaviour
     public float speed;
     public float rotationSpeed;
     public float speedUp;
+    public float speedBoost;
+
+
 
     private Animator anim;
     // Start is called before the first frame update
@@ -28,12 +31,22 @@ public class flight : MonoBehaviour
         float translation = 0.5F * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
         float sobe = Input.GetAxis("Vertical") * speedUp;
+        float boost = Input.GetAxis("Jump") * speedBoost;
+
 
         translation *= Time.deltaTime;
+        boost *= Time.deltaTime;
         rotation *= Time.deltaTime;
         sobe *= Time.deltaTime;
 
-        transform.Translate(0, 0, translation);
+        if (boost > 0)
+        {
+            transform.Translate(0, 0, translation + boost);
+        }
+        else
+        {
+            transform.Translate(0, 0, translation);
+        }
         transform.Rotate(sobe, rotation, 0);
 
         if (rotation > 0)
