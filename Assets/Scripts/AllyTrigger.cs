@@ -9,7 +9,6 @@ public class AllyTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Passaro entrou");
             ally.GetComponent<Ally>().enabled = true;
         }
     }

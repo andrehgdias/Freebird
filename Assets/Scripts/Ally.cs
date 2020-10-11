@@ -9,21 +9,31 @@ public class Ally : MonoBehaviour
     [Range(0f, 1f)]
     public float smoothTime;
     public Rigidbody rb;
+    private Animator anim;
+
+    public BirdSide side;
 
     public int qtdBirds = 0;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
-     private void FixedUpdate()
-    {
-        Debug.Log("Quantidade de passaros");
-        Debug.Log(qtdBirds);
+    private void OnEnable()
+    {   
+        if(side == BirdSide.right)
+            anim.Play("right2left");
+        else
+            anim.Play("left2right");
+    }
 
-        // destination = new Vector3(target.position.x, target.position.y, target.position.z);
-        rb.position = Vector3.Lerp(rb.position, target.position, Time.deltaTime * speed);
+     private void Update()
+    {
         transform.rotation = target.rotation;
     }
+
 }
+
+public enum BirdSide { right , left };
