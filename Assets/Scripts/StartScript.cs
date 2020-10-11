@@ -10,6 +10,8 @@ public class StartScript : MonoBehaviour
     public GameObject bird;
     public GameObject camera;
     public GameObject effect;
+    public GameObject turnE;
+    public GameObject turnD;
     public Canvas canvas;
 
     private Boolean started = false;
@@ -30,6 +32,12 @@ public class StartScript : MonoBehaviour
         if (canvas.GetComponent<AudioSource>().volume == 0f) {
             canvas.GetComponent<AudioSource>().enabled = false;
         }
+    }
+
+    public void Tracer()
+    {
+        turnE.GetComponent<TrailRenderer>().emitting = true;
+        turnD.GetComponent<TrailRenderer>().emitting = true;
     }
 
     // Update is called once per frame
