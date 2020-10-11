@@ -22,7 +22,7 @@ public class HandleEffect : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            valorAntigo -= 0.2f;
+            valorAntigo -= 0.25f;
             increase = true;
 
             ally.GetComponent<Ally>().qtdBirds += 1;
