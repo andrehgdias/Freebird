@@ -32,6 +32,7 @@ public class flight : MonoBehaviour
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
         sobe *= Time.deltaTime;
+
         transform.Translate(0, 0, translation);
         transform.Rotate(sobe, rotation, 0);
 
